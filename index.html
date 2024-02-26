@@ -19,6 +19,7 @@
         height: 200px;
         position: relative;
         perspective: 1000px;
+        margin-right: 200px;
     }
     #cube {
         width: 100%;
@@ -39,6 +40,11 @@
     .face:nth-child(4) { transform: rotateY(-90deg) translateZ(100px); }
     .face:nth-child(5) { transform: rotateX(90deg) translateZ(100px); }
     .face:nth-child(6) { transform: rotateX(-90deg) translateZ(100px); }
+    
+    #text-container {
+        display: flex;
+        align-items: center;
+    }
 
     @keyframes rotateCube {
         from {
@@ -61,8 +67,11 @@
         <div class="face"></div>
     </div>
 </div>
+<div id="text-container">
+    <span id="text">henr1kas</span>
+</div>
 <script>
-    const cube = document.getElementById('cube');
+    const text = document.getElementById('text');
     const faces = document.querySelectorAll('.face');
 
     let hue = 0;
@@ -79,6 +88,7 @@
         faces.forEach(face => {
             face.style.backgroundColor = color;
         });
+        text.style.color = color;
         requestAnimationFrame(changeColor);
     }
 
