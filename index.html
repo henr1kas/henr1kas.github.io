@@ -6,20 +6,34 @@
 <title>henr1kas</title>
 <style>
     body {
-        background-color: black;
-        color: white;
+        background-color: #333;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        padding: 20px;
+    }
+    button {
+        background-color: #555;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+    button:hover {
+        background-color: #777;
+    }
+    .container {
         display: flex;
         justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
+        margin-bottom: 20px;
     }
     #cube-container {
         width: 200px;
         height: 200px;
         position: relative;
         perspective: 1000px;
-        margin-right: 200px;
+        margin-left: 40px;
     }
     #cube {
         width: 100%;
@@ -40,11 +54,6 @@
     .face:nth-child(4) { transform: rotateY(-90deg) translateZ(100px); }
     .face:nth-child(5) { transform: rotateX(90deg) translateZ(100px); }
     .face:nth-child(6) { transform: rotateX(-90deg) translateZ(100px); }
-    
-    #text-container {
-        display: flex;
-        align-items: center;
-    }
 
     @keyframes rotateCube {
         from {
@@ -57,6 +66,16 @@
 </style>
 </head>
 <body>
+
+<div class="container">
+    <strong id="henr1kas">henr1kas</strong>
+</div>
+
+<div class="container">
+    <button id="cubeMenu">Show cube</button>
+    <button id="homeMenu">Hide cube</button>
+</div>
+
 <div id="cube-container">
     <div id="cube">
         <div class="face"></div>
@@ -67,11 +86,9 @@
         <div class="face"></div>
     </div>
 </div>
-<div id="text-container">
-    <span id="text">henr1kas</span>
-</div>
+
 <script>
-    const text = document.getElementById('text');
+    const text = document.getElementById('henr1kas');
     const faces = document.querySelectorAll('.face');
 
     let hue = 0;
@@ -93,6 +110,17 @@
     }
 
     changeColor();
+
+    const cubeMenu = document.getElementById('cubeMenu');
+    cubeMenu.addEventListener('click', function() {
+        document.getElementById('cube-container').style.display = '';
+    });
+
+    const homeMenu = document.getElementById('homeMenu');
+    homeMenu.addEventListener('click', function() {
+        document.getElementById('cube-container').style.display = 'none';
+    });
 </script>
+
 </body>
 </html>
