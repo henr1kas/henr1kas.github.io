@@ -32,7 +32,7 @@
         position: absolute;
         width: 200px;
         height: 200px;
-        border: 1px solid black;
+        border: 2px solid black;
     }
     .face:nth-child(1) { transform: translateZ(100px); }
     .face:nth-child(2) { transform: rotateY(90deg) translateZ(100px); }
@@ -86,7 +86,7 @@
         }
         const color = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
         faces.forEach(face => {
-            face.style.backgroundColor = color;
+            face.style.borderColor  = color;
         });
         text.style.color = color;
         requestAnimationFrame(changeColor);
