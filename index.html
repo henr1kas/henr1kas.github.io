@@ -43,45 +43,6 @@
         justify-content: center;
         margin-bottom: 20px;
     }
-
-    #cube-container {
-        width: 200px;
-        height: 200px;
-        position: relative;
-        perspective: 1000px;
-        margin-left: 40px;
-    }
-
-    #cube {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        transform-style: preserve-3d;
-        animation: rotateCube 5s infinite linear;
-    }
-
-    .face {
-        position: absolute;
-        width: 200px;
-        height: 200px;
-        border: 2px solid black;
-    }
-
-    .face:nth-child(1) { transform: translateZ(100px); }
-    .face:nth-child(2) { transform: rotateY(90deg) translateZ(100px); }
-    .face:nth-child(3) { transform: rotateY(180deg) translateZ(100px); }
-    .face:nth-child(4) { transform: rotateY(-90deg) translateZ(100px); }
-    .face:nth-child(5) { transform: rotateX(90deg) translateZ(100px); }
-    .face:nth-child(6) { transform: rotateX(-90deg) translateZ(100px); }
-
-    @keyframes rotateCube {
-        from {
-            transform: rotateX(0deg) rotateY(0deg);
-        }
-        to {
-            transform: rotateX(360deg) rotateY(360deg);
-        }
-    }
 </style>
 </head>
 <body>
@@ -91,24 +52,11 @@
 </div>
 
 <div class="container">
-    <button id="cubeMenu">Show cube</button>
-    <button id="homeMenu">Hide cube</button>
-</div>
-
-<div id="cube-container">
-    <div id="cube">
-        <div class="face"></div>
-        <div class="face"></div>
-        <div class="face"></div>
-        <div class="face"></div>
-        <div class="face"></div>
-        <div class="face"></div>
-    </div>
+    <button id="homeButton">Home</button>
 </div>
 
 <script>
     const text = document.getElementById('henr1kas');
-    const faces = document.querySelectorAll('.face');
 
     let hue = 0;
     let saturation = 100;
@@ -121,23 +69,17 @@
             hue = 0;
         }
         const color = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-        faces.forEach(face => {
-            face.style.borderColor  = color;
-        });
         text.style.color = color;
         requestAnimationFrame(changeColor);
     }
 
     changeColor();
+</script>
 
-    const cubeMenu = document.getElementById('cubeMenu');
-    cubeMenu.addEventListener('click', function() {
-        document.getElementById('cube-container').style.display = '';
-    });
-
-    const homeMenu = document.getElementById('homeMenu');
-    homeMenu.addEventListener('click', function() {
-        document.getElementById('cube-container').style.display = 'none';
+<script>
+    const homeButton = document.getElementById('homeButton');
+    homeButton.addEventListener('click', function() {
+        
     });
 </script>
 
