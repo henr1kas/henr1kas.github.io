@@ -1,49 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>henr1kas</title>
-<style>
-    @font-face {
-        font-family: Garde;
-        src: url('font/Garde.woff2') format('woff2'),
-             url('font/Garde.woff') format('woff'),
-             url('font/Garde.ttf')  format('truetype'),
-             url('font/Garde.svg#garderegular') format('svg');
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>henr1kas</title>
+    <style>
+        @font-face {
+            font-family: Garde;
+            src: url('font/Garde.woff2') format('woff2'),
+                 url('font/Garde.woff') format('woff'),
+                 url('font/Garde.ttf')  format('truetype'),
+                 url('font/Garde.svg#garderegular') format('svg');
+        }
 
-    .garde-font {
-        font-family: Garde, Arial, sans-serif;
-    }
+        .garde-font {
+            font-family: Garde, Arial, sans-serif;
+        }
 
-    body {
-        background-color: #333;
-        color: #fff;
-        font-family: Arial, sans-serif;
-        padding: 20px;
-    }
-    
-    button {
-        background-color: #555;
-        color: #fff;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-right: 10px;
-    }
-    
-    button:hover {
-        background-color: #777;
-    }
-    
-    .container {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 20px;
-    }
-</style>
+        body {
+            background-color: #333;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        button {
+            background-color: #555;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #777;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        #codeDisplay {
+            width: 80%;
+            margin: 0 auto;
+            padding: 10px;
+            background-color: #222;
+            border-radius: 5px;
+            overflow: auto;
+        }
+
+        #code {
+            width: 100%;
+            min-height: 110px;
+            background-color: transparent;
+            color: #fff;
+            border: none;
+            font-family: monospace;
+            resize: none;
+        }
+    </style>
 </head>
 <body>
 
@@ -53,6 +72,25 @@
 
 <div class="container">
     <button id="homeButton">Home</button>
+</div>
+
+<div class="container">
+    <p>Copy and paste this into the top of your LeetCode for speedup:</p>
+</div>
+
+<div id="codeDisplay" class="container">
+    <textarea id="code" readonly>
+#pragma GCC optimize("O3,unroll-loops")
+#pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")
+
+static const bool fastinput = [](){
+    std::cin.tie(nullptr);
+    return std::ios_base::sync_with_stdio(false);
+}();</textarea>
+</div>
+
+<div class="container">
+    <p>This enables hardware specific optimization & fast input by unsyncing stdio and untying cin. The fast input will be enabled at program launch because it is static.</p>
 </div>
 
 <script>
